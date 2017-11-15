@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ViewController: NSViewController {
+class HomeVC: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,5 @@ class ViewController: NSViewController {
         // Update the view, if already loaded.
         }
     }
-
-
 }
 
