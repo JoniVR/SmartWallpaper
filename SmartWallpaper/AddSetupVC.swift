@@ -30,4 +30,21 @@ class AddSetupVC: NSViewController {
         
         self.dismiss(sender)
     }
+    
+    /** Triggered when user clicks the `Select folder` button. */
+    @IBAction func selectFolderClicked(_ sender: NSButton) {
+        
+        let pathPicker = NSOpenPanel()
+        
+        pathPicker.allowsMultipleSelection = false
+        pathPicker.canChooseFiles = false
+        pathPicker.canChooseDirectories = true
+        
+        pathPicker.runModal()
+        
+        if let chosenPath = pathPicker.url {
+            
+            print(chosenPath)
+        }
+    }
 }
