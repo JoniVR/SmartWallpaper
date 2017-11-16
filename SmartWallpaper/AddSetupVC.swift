@@ -11,6 +11,8 @@ import Cocoa
 class AddSetupVC: NSViewController {
 
     @IBOutlet weak var tableView: NSScrollView!
+    @IBOutlet weak var pathLbl: NSTextField!
+    @IBOutlet weak var addBtn: NSButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,7 @@ class AddSetupVC: NSViewController {
         
         // MARK: Prevent resizing
         view.window!.styleMask.remove(NSWindow.StyleMask.resizable)
+        addBtn.isEnabled = false
     }
     
     /** Remove the `addSetup` sheet without adding a setup. */
@@ -45,6 +48,32 @@ class AddSetupVC: NSViewController {
         if let chosenPath = pathPicker.url {
             
             print(chosenPath)
+            pathLbl.stringValue = chosenPath.absoluteString
         }
+    }
+}
+
+extension AddSetupVC {
+    
+    /**
+     Used to check if all required values have been entered before we add the setup.
+     */
+    fileprivate func checkIfNetworkAndPathPresent(){
+        
+        //TODO: write check code
+        //if pathLbl.stringValue != nil
+    }
+}
+
+extension AddSetupVC: NSTableViewDelegate, NSTableViewDataSource {
+    
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        
+        return 10
+    }
+    
+    func tableView(_ tableView: NSTableView, dataCellFor tableColumn: NSTableColumn?, row: Int) -> NSCell? {
+        
+        return NSCell()
     }
 }

@@ -737,14 +737,14 @@
             <objects>
                 <viewController title="Add setup" showSeguePresentationStyle="single" id="GYT-0B-kSh" customClass="AddSetupVC" customModule="SmartWallpaper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Kfd-i8-1Jc">
-                        <rect key="frame" x="0.0" y="0.0" width="240" height="366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="372" height="373"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aeC-Fg-aM8">
-                                <rect key="frame" x="46" y="8" width="148" height="36"/>
+                                <rect key="frame" x="112" y="8" width="148" height="21"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tIC-9I-wc3">
-                                        <rect key="frame" x="-6" y="1" width="82" height="32"/>
+                                        <rect key="frame" x="-6" y="-7" width="82" height="32"/>
                                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1hh-n2-PR3">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -757,7 +757,7 @@ Gw
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rUu-M0-7i0">
-                                        <rect key="frame" x="72" y="1" width="82" height="32"/>
+                                        <rect key="frame" x="72" y="-7" width="82" height="32"/>
                                         <buttonCell key="cell" type="push" title="Add" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AbT-Bn-fsm">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -777,10 +777,10 @@ Gw
                                 <rect key="frame" x="20" y="-22" width="0.0" height="0.0"/>
                             </stackView>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jSN-YG-RkE">
-                                <rect key="frame" x="20" y="64" width="200" height="40"/>
+                                <rect key="frame" x="20" y="49" width="332" height="62"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a91-Ek-fra">
-                                        <rect key="frame" x="-2" y="26" width="130" height="14"/>
+                                        <rect key="frame" x="-2" y="48" width="130" height="14"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Select a wallpaper path" id="fo2-LJ-f9b">
                                             <font key="font" metaFont="systemMedium" size="11"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -788,7 +788,7 @@ Gw
                                         </textFieldCell>
                                     </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gyb-pU-Y1G">
-                                        <rect key="frame" x="-5" y="-6" width="93" height="28"/>
+                                        <rect key="frame" x="-5" y="16" width="93" height="28"/>
                                         <buttonCell key="cell" type="push" title="Select folder" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wfS-e3-7HK">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="smallSystem"/>
@@ -797,21 +797,31 @@ Gw
                                             <action selector="selectFolderClicked:" target="GYT-0B-kSh" id="zS7-2u-LgI"/>
                                         </connections>
                                     </button>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wkh-fm-P2K">
+                                        <rect key="frame" x="-2" y="0.0" width="54" height="14"/>
+                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="rXr-dP-dH4">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
                                 </subviews>
                                 <visibilityPriorities>
+                                    <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AfS-p5-uV0">
-                                <rect key="frame" x="20" y="124" width="200" height="222"/>
+                                <rect key="frame" x="20" y="131" width="332" height="222"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="g0T-SW-38R">
-                                        <rect key="frame" x="-1" y="208" width="202" height="14"/>
+                                        <rect key="frame" x="-1" y="208" width="334" height="14"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Select a network" id="pEi-tZ-w1y">
                                             <font key="font" metaFont="systemMedium" size="11"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -819,19 +829,19 @@ Gw
                                         </textFieldCell>
                                     </textField>
                                     <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="91H-Nx-ZpS">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="332" height="200"/>
                                         <clipView key="contentView" copiesOnScroll="NO" id="9pj-1N-zQl">
-                                            <rect key="frame" x="1" y="1" width="198" height="198"/>
+                                            <rect key="frame" x="1" y="1" width="330" height="198"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" id="1Rg-E0-QA8">
-                                                    <rect key="frame" x="0.0" y="0.0" width="198" height="198"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="330" height="198"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <size key="intercellSpacing" width="3" height="2"/>
                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                     <tableColumns>
-                                                        <tableColumn identifier="" width="64" minWidth="10" maxWidth="3.4028234663852886e+38" id="wna-fH-5K4">
+                                                        <tableColumn identifier="" editable="NO" width="327" minWidth="10" maxWidth="3.4028234663852886e+38" id="wna-fH-5K4">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                                 <font key="font" metaFont="smallSystem"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -842,17 +852,14 @@ Gw
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
-                                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                         </tableColumn>
                                                     </tableColumns>
                                                 </tableView>
                                             </subviews>
                                         </clipView>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="200" id="Qj3-9I-Imy"/>
-                                        </constraints>
                                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="lFc-da-Vu7">
-                                            <rect key="frame" x="1" y="214" width="198" height="16"/>
+                                            <rect key="frame" x="1" y="183" width="330" height="16"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="sRm-Jy-i0f">
@@ -893,12 +900,14 @@ Gw
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addBtn" destination="rUu-M0-7i0" id="jXw-Er-dbK"/>
+                        <outlet property="pathLbl" destination="wkh-fm-P2K" id="gbP-DS-UKO"/>
                         <outlet property="tableView" destination="91H-Nx-ZpS" id="4zk-Xl-H05"/>
                     </connections>
                 </viewController>
                 <customObject id="4Wl-rO-mxh" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="697" y="297"/>
+            <point key="canvasLocation" x="694" y="261.5"/>
         </scene>
         <!--HomeVC-->
         <scene sceneID="hIz-AP-VOD">
