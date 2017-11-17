@@ -902,7 +902,7 @@ Gw
                     <connections>
                         <outlet property="addBtn" destination="rUu-M0-7i0" id="jXw-Er-dbK"/>
                         <outlet property="pathLbl" destination="wkh-fm-P2K" id="gbP-DS-UKO"/>
-                        <outlet property="tableView" destination="91H-Nx-ZpS" id="4zk-Xl-H05"/>
+                        <outlet property="tableView" destination="1Rg-E0-QA8" id="nfA-t2-YEy"/>
                     </connections>
                 </viewController>
                 <customObject id="4Wl-rO-mxh" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
