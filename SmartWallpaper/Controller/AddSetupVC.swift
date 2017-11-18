@@ -14,7 +14,12 @@ class AddSetupVC: NSViewController {
     @IBOutlet weak var pathLbl: NSTextField!
     @IBOutlet weak var addBtn: NSButton!
     
-    var networkList = [String]()
+    /** An array of Strings that is used to store the names of previously connected networks. */
+    fileprivate var networkList = [String]()
+    /** A string that stores the network name selected by the user. */
+    fileprivate var selectedNetworkName: String?
+    /** a String that stores the path the user has selected */
+    fileprivate var selectedPath: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +42,12 @@ class AddSetupVC: NSViewController {
         self.dismiss(sender)
     }
     
+    @IBAction func addClicked(_ sender: NSButton) {
+        
+        // TODO: write code to add to list.
+        self.dismiss(sender)
+    }
+    
     /** Triggered when user clicks the `Select folder` button. */
     @IBAction func selectFolderClicked(_ sender: NSButton) {
         
@@ -50,16 +61,25 @@ class AddSetupVC: NSViewController {
         
         if let chosenPath = pathPicker.url?.absoluteString {
             
-            print(chosenPath)
+            selectedPath = chosenPath
             let pathToDisplay = chosenPath.stringByReplacingFirstOccurrenceOfString(target: "file://", withString: ""
             )
             pathLbl.stringValue = pathToDisplay
+            checkIfNetworkAndPathPresent()
         }
     }
 }
 
 extension AddSetupVC {
     
+    /**
+     This function is used to fetch the list of previously connected networks.
+     We do this using the bash command line with the command:
+     ```
+     defaults read /Library/Preferences/SystemConfiguration/com.apple.airport.preferences | grep SSIDString
+     ```
+     After getting a network name, we remove prefix and suffix from the result and add the network name (String) to the `networkList`.
+     */
     fileprivate func getNetworkList(){
         
         let (output, terminationStatus) = shell(arguments: ["-c", "defaults read /Library/Preferences/SystemConfiguration/com.apple.airport.preferences | grep SSIDString"])
@@ -88,10 +108,16 @@ extension AddSetupVC {
     
     /**
      Used to check if all required values have been entered before we add the setup.
+     We also enable/disable the "Add" button here.
      */
     fileprivate func checkIfNetworkAndPathPresent(){
         
         //TODO: write check code
+        if (selectedNetworkName != nil && selectedPath != nil) {
+            addBtn.isEnabled = true
+        } else {
+            addBtn.isEnabled = false
+        }
     }
     
     /**
@@ -115,6 +141,7 @@ extension AddSetupVC {
 
 extension AddSetupVC: NSTableViewDelegate, NSTableViewDataSource {
     
+    /** Setting up tableView */
     fileprivate func setupTableView(){
         
         tableView.delegate = self
@@ -126,11 +153,18 @@ extension AddSetupVC: NSTableViewDelegate, NSTableViewDataSource {
         return networkList.count
     }
     
-    func tableView(_ tableView: NSTableView, dataCellFor tableColumn: NSTableColumn?, row: Int) -> NSCell? {
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         
-        let cell = NSCell()
-        cell.title = networkList[row]
+        if let cell = tableView.makeView(withIdentifier: tableColumn!.identifier, owner: self) as? NSTableCellView {
+            cell.textField?.stringValue = networkList[row]
+            return cell
+        }
+        return nil
+    }
+    
+    func tableViewSelectionDidChange(_ notification: Notification) {
         
-        return cell
+        selectedNetworkName = networkList[tableView.selectedRow]
+        checkIfNetworkAndPathPresent()
     }
 }
