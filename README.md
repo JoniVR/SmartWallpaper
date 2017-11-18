@@ -1,16 +1,16 @@
 # SmartWallpaper
 _Network based wallpapers for MacOS_
 
+<hr>
+
 ## Project goal and information
-This actually started as a problem I had. 
-
-I'm a Tech student, which means I'm moving around a lot between school and home.
-
-The problem is that I want a different set of wallpapers when I'm at home vs when I'm at school.
-I always use a wallpaper slideshow that automatically changes, which is why I'm only implementing the option to pick folders.
+This project started as a problem I was facing. 
+I'm someone who's moving around a lot between different locations.
+The problem? I want a different set of wallpapers when I'm at home vs when I'm somewhere else.
 
 This led to the creation of this project, a smarter way to manage your wallpapers based on the network you're connected to.
-Just pick your wallpaper folder, the network that it will be associated with and you're good to go. Whenever you connect to a different network the software will check for a wallpaper setup and apply it when found.
+Just pick your wallpaper folder (currently only folders because that's what I use), pick the network you want it to be associated with and you're good to go. 
+Whenever you connect to a different network the software will check for a wallpaper setup and apply it when found.
 
 ## Disclaimer
 This is my first MacOS project, so the code won't be perfect. Feel free to improve, criticize and contribute.
