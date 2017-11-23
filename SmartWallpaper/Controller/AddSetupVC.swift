@@ -61,10 +61,9 @@ class AddSetupVC: NSViewController {
         
         if let chosenPath = pathPicker.url?.absoluteString {
             
-            selectedPath = chosenPath
-            let pathToDisplay = chosenPath.stringByReplacingFirstOccurrenceOfString(target: "file://", withString: ""
+            selectedPath = chosenPath.stringByReplacingFirstOccurrenceOfString(target: "file://", withString: ""
             )
-            pathLbl.stringValue = pathToDisplay
+            pathLbl.stringValue = selectedPath!
             checkIfNetworkAndPathPresent()
         }
     }
@@ -115,13 +114,45 @@ extension AddSetupVC {
         //TODO: write check code
         if (selectedNetworkName != nil && selectedPath != nil) {
             addBtn.isEnabled = true
+            
+            runScript(path: selectedPath!, rotation: 1, randomOrder: true, interval: 1.0)
+            
         } else {
             addBtn.isEnabled = false
         }
     }
     
     /**
-     This function is used to execute shell commands
+     This function executes an AppleScript that changes the wallpaper folder and settings.
+     - parameter path: The path (as String) used to describe the image folder that will be used for the wallpapers.
+     - parameter rotation: The rotation mode of the wallpapers:
+         - 0 = off
+         - 1 = interval
+         - 2 = login
+         - 3 = sleep
+     - parameter randomOrder: Determines if the wallpaper rotation should be random or not.
+     - parameter interval: The interval (in seconds) at which the desktops will change (in case rotation mode is set to 1, interval).
+    */
+    fileprivate func runScript(path: String, rotation: Int, randomOrder: Bool, interval: CGFloat){
+        
+        let myAppleScript =
+        "try\n " +
+            "tell application \"System Events\"\n" +
+                "tell every desktop\n" +
+                    "set picture rotation to \(rotation)\n" +
+                    "set random order to \(randomOrder)\n" +
+                    "set pictures folder to \"\(path)\"\n" +
+                    "set change interval to \(interval)\n" +
+                "end tell\n" +
+            "end tell\n" +
+        "end try"
+        if let scriptObject = NSAppleScript(source: myAppleScript) {
+            scriptObject.executeAndReturnError(nil)
+        }
+    }
+    
+    /**
+     This function is used to execute shell commands.
      */
     fileprivate func shell(arguments: [String] = []) -> (String? , Int32) {
         let task = Process()
@@ -141,7 +172,7 @@ extension AddSetupVC {
 
 extension AddSetupVC: NSTableViewDelegate, NSTableViewDataSource {
     
-    /** Setting up tableView */
+    /** Setting up tableView. */
     fileprivate func setupTableView(){
         
         tableView.delegate = self
