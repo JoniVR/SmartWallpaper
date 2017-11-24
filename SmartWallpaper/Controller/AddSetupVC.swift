@@ -13,6 +13,9 @@ class AddSetupVC: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet weak var pathLbl: NSTextField!
     @IBOutlet weak var addBtn: NSButton!
+    @IBOutlet weak var changeWallpaperBtn: NSButton!
+    @IBOutlet weak var changeWallpaperIntervalPopup: NSPopUpButton!
+    @IBOutlet weak var shuffleWallpaperBtn: NSButton!
     
     /** An array of Strings that is used to store the names of previously connected networks. */
     fileprivate var networkList = [String]()
@@ -44,6 +47,7 @@ class AddSetupVC: NSViewController {
     
     @IBAction func addClicked(_ sender: NSButton) {
         
+        runScript(path: selectedPath!, rotation: 1, randomOrder: true, interval: 60.0)
         // TODO: write code to add to list.
         self.dismiss(sender)
     }
@@ -114,9 +118,6 @@ extension AddSetupVC {
         //TODO: write check code
         if (selectedNetworkName != nil && selectedPath != nil) {
             addBtn.isEnabled = true
-            
-            runScript(path: selectedPath!, rotation: 1, randomOrder: true, interval: 1.0)
-            
         } else {
             addBtn.isEnabled = false
         }
