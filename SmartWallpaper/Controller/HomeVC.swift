@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HomeVC.swift
 //  SmartWallpaper
 //
 //  Created by Joni Van Roost on 15/11/17.
@@ -9,6 +9,8 @@
 import Cocoa
 
 class HomeVC: NSViewController {
+    
+    @IBOutlet weak var tableView: NSTableView!
     
     /**
      An array that stores all `NetworkSetup` objects.
@@ -29,3 +31,12 @@ class HomeVC: NSViewController {
     }
 }
 
+extension HomeVC: NSTableViewDelegate, NSTableViewDataSource {
+    
+    /** Setting up the tableView. */
+    fileprivate func setupTableView() {
+    
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+}

@@ -21,7 +21,7 @@ class AddSetupVC: NSViewController {
     fileprivate var networkList = [String]()
     /** A string that stores the network name selected by the user. */
     fileprivate var selectedNetworkName: String?
-    /** a String that stores the path the user has selected */
+    /** A String that stores the path the user has selected. */
     fileprivate var selectedPath: String?
     
     override func viewDidLoad() {

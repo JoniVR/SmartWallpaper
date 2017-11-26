@@ -980,7 +980,7 @@ Gw
                 </viewController>
                 <customObject id="4Wl-rO-mxh" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="694" y="304.5"/>
+            <point key="canvasLocation" x="694" y="265"/>
         </scene>
         <!--HomeVC-->
         <scene sceneID="hIz-AP-VOD">
@@ -1090,6 +1090,9 @@ Gw
                             <constraint firstAttribute="trailing" secondItem="wgg-Uj-7lO" secondAttribute="trailing" constant="20" id="hmu-0S-c10"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="7Lx-QZ-Pdg" id="Mzr-eA-Kq0"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
