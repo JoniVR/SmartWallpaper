@@ -47,8 +47,19 @@ class AddSetupVC: NSViewController {
     
     @IBAction func addClicked(_ sender: NSButton) {
         
-        runScript(path: selectedPath!, rotation: 1, randomOrder: true, interval: 60.0)
-        // TODO: write code to add to list.
+        /*
+         TODO:
+         - check if NetworkSetup already exists before adding.
+         - move and refactor runScript code.
+         */
+        if let homeVC = self.parent as? HomeVC {
+            
+            let networkSetup = NetworkSetup(selectedPath: selectedPath!, networkName: selectedNetworkName!, rotationMode: .interval, randomOrder: true, interval: 60.0)
+            homeVC.networkSetupList.append(networkSetup)
+        }
+        
+        //runScript(path: selectedPath!, rotation: 1, randomOrder: true, interval: 60.0)
+        
         self.dismiss(sender)
     }
     

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C5794EE1FCA243300D6866D /* NetworkSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5794ED1FCA243300D6866D /* NetworkSetup.swift */; };
 		6C7D75D91FBE2F84005D6D88 /* StringsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7D75D81FBE2F84005D6D88 /* StringsExtensions.swift */; };
 		6CC283131FBCF16300D34D3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC283121FBCF16300D34D3B /* AppDelegate.swift */; };
 		6CC283171FBCF16300D34D3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6CC283161FBCF16300D34D3B /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6C5794ED1FCA243300D6866D /* NetworkSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSetup.swift; sourceTree = "<group>"; };
 		6C7D75D81FBE2F84005D6D88 /* StringsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsExtensions.swift; sourceTree = "<group>"; };
 		6CC2830F1FBCF16300D34D3B /* SmartWallpaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartWallpaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CC283121FBCF16300D34D3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +51,7 @@
 		6CA3B2161FBE2F1E005E0272 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6C5794ED1FCA243300D6866D /* NetworkSetup.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C7D75D91FBE2F84005D6D88 /* StringsExtensions.swift in Sources */,
+				6C5794EE1FCA243300D6866D /* NetworkSetup.swift in Sources */,
 				6CC283261FBCFA1B00D34D3B /* HomeVC.swift in Sources */,
 				6CC283131FBCF16300D34D3B /* AppDelegate.swift in Sources */,
 				6CC283231FBCF68D00D34D3B /* AddSetupVC.swift in Sources */,

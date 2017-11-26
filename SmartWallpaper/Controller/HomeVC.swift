@@ -9,16 +9,22 @@
 import Cocoa
 
 class HomeVC: NSViewController {
-
+    
+    /**
+     An array that stores all `NetworkSetup` objects.
+     */
+    public var networkSetupList = [NetworkSetup]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
-        // Do any additional setup after loading the view.
     }
-
+    
     override var representedObject: Any? {
         didSet {
-        // Update the view, if already loaded.
+            // Update the view, if already loaded.
+            
         }
     }
 }
