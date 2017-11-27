@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Foundation
 
 class HomeVC: NSViewController {
     
@@ -14,13 +15,28 @@ class HomeVC: NSViewController {
     
     /**
      An array that stores all `NetworkSetup` objects.
+     This array is stored inside UserDefaults.
      */
-    public var networkSetupList = [NetworkSetup]()
+    public var networkSetupList: [NetworkSetup] {
+        get {
+            if let setupList = UserDefaults.standard.array(forKey: "setupList") as? [Data] {
+                // Decode NSData into NetworkSetup object.
+                return setupList.map({NSKeyedUnarchiver.unarchiveObject(with: $0) as! NetworkSetup})
+            } else {
+                return []
+            }
+        }
+        set {
+            // Encode NetworkSetup object.
+            let setupList = newValue.map({ NSKeyedArchiver.archivedData(withRootObject: $0)})
+            UserDefaults.standard.set(setupList, forKey: "setupList")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        
     }
     
     override var representedObject: Any? {
@@ -35,7 +51,7 @@ extension HomeVC: NSTableViewDelegate, NSTableViewDataSource {
     
     /** Setting up the tableView. */
     fileprivate func setupTableView() {
-    
+        
         tableView.delegate = self
         tableView.dataSource = self
     }

@@ -30,6 +30,7 @@ class AddSetupVC: NSViewController {
         addBtn.isEnabled = false
         getNetworkList()
         setupTableView()
+        setupPopUpButton()
     }
     
     override func viewDidAppear() {
@@ -54,7 +55,7 @@ class AddSetupVC: NSViewController {
          */
         if let homeVC = self.parent as? HomeVC {
             
-            let networkSetup = NetworkSetup(selectedPath: selectedPath!, networkName: selectedNetworkName!, rotationMode: .interval, randomOrder: true, interval: 60.0)
+            let networkSetup = NetworkSetup(selectedPath: selectedPath!, networkName: selectedNetworkName!, rotationMode: .interval, randomOrder: shuffleWallpaperBtn.isFlipped, interval: 60.0)
             homeVC.networkSetupList.append(networkSetup)
         }
         
@@ -80,6 +81,17 @@ class AddSetupVC: NSViewController {
             )
             pathLbl.stringValue = selectedPath!
             checkIfNetworkAndPathPresent()
+        }
+    }
+    
+    @IBAction func changeWallpaperClicked(_ sender: NSButton) {
+        
+        if sender.state == .on {
+            changeWallpaperIntervalPopup.isEnabled = true
+            shuffleWallpaperBtn.isEnabled = true
+        } else {
+            changeWallpaperIntervalPopup.isEnabled = false
+            shuffleWallpaperBtn.isEnabled = false
         }
     }
 }
@@ -179,6 +191,14 @@ extension AddSetupVC {
         let output = String(data: data, encoding: .utf8)
         let terminationStatus = task.terminationStatus
         return (output, terminationStatus)
+    }
+    
+    /** Setting up the options for the `changeWallpaperIntervalPopup`. */
+    fileprivate func setupPopUpButton(){
+        
+        changeWallpaperIntervalPopup.removeAllItems()
+        let items = ["At login","After sleep","Every 5 seconds","Every minute","Every 5 minutes","Every 15 minutes","Every half hour","Every hour","Every day"]
+        changeWallpaperIntervalPopup.addItems(withTitles: items)
     }
 }
 
