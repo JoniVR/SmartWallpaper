@@ -1,6 +1,6 @@
 # SmartWallpaper
 _Network based wallpapers for MacOS_
-
+⚠️ Project is not finished yet, still under construction. ⚠️
 <hr>
 
 ## Project goal and information
