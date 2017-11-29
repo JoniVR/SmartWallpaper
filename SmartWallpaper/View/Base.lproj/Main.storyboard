@@ -761,6 +761,9 @@ Gw
                                         <buttonCell key="cell" type="push" title="Add" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AbT-Bn-fsm">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
+                                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
                                         </buttonCell>
                                         <connections>
                                             <action selector="addClicked:" target="GYT-0B-kSh" id="rJd-gW-VLB"/>
@@ -1006,7 +1009,7 @@ Gw
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn identifier="" editable="NO" width="226" minWidth="10" maxWidth="3.4028234663852886e+38" id="h1Z-JJ-yBM">
+                                                <tableColumn identifier="NetworkName" editable="NO" width="226" minWidth="10" maxWidth="3.4028234663852886e+38" id="h1Z-JJ-yBM">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Network name">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -1019,7 +1022,7 @@ Gw
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                 </tableColumn>
-                                                <tableColumn identifier="" width="205" minWidth="10" maxWidth="3.4028234663852886e+38" id="MvJ-92-XaW">
+                                                <tableColumn identifier="Path" width="205" minWidth="10" maxWidth="3.4028234663852886e+38" id="MvJ-92-XaW">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Path">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>

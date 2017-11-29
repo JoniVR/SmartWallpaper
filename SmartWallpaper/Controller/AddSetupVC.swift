@@ -17,11 +17,11 @@ class AddSetupVC: NSViewController {
     @IBOutlet weak var changeWallpaperIntervalPopup: NSPopUpButton!
     @IBOutlet weak var shuffleWallpaperBtn: NSButton!
     
-    /** An array of Strings that is used to store the names of previously connected networks. */
+    /// An array of Strings that is used to store the names of previously connected networks.
     fileprivate var networkList = [String]()
-    /** A string that stores the network name selected by the user. */
+    /// A string that stores the network name selected by the user.
     fileprivate var selectedNetworkName: String?
-    /** A String that stores the path the user has selected. */
+    /// A String that stores the path the user has selected.
     fileprivate var selectedPath: String?
     
     override func viewDidLoad() {
@@ -40,7 +40,7 @@ class AddSetupVC: NSViewController {
         view.window!.styleMask.remove(NSWindow.StyleMask.resizable)
     }
     
-    /** Remove the `addSetup` sheet without adding a setup. */
+    /// Remove the `addSetup` sheet without adding a setup.
     @IBAction func cancelClicked(_ sender: NSButton) {
         
         self.dismiss(sender)
@@ -64,7 +64,7 @@ class AddSetupVC: NSViewController {
         self.dismiss(sender)
     }
     
-    /** Triggered when user clicks the `Select folder` button. */
+    /// Triggered when user clicks the `Select folder` button.
     @IBAction func selectFolderClicked(_ sender: NSButton) {
         
         let pathPicker = NSOpenPanel()
@@ -175,9 +175,7 @@ extension AddSetupVC {
         }
     }
     
-    /**
-     This function is used to execute shell commands.
-     */
+    /// This function is used to execute shell commands.
     fileprivate func shell(arguments: [String] = []) -> (String? , Int32) {
         let task = Process()
         task.launchPath = "/bin/bash"
@@ -193,7 +191,7 @@ extension AddSetupVC {
         return (output, terminationStatus)
     }
     
-    /** Setting up the options for the `changeWallpaperIntervalPopup`. */
+    /// Setting up the options for the `changeWallpaperIntervalPopup`.
     fileprivate func setupPopUpButton(){
         
         changeWallpaperIntervalPopup.removeAllItems()
@@ -204,7 +202,7 @@ extension AddSetupVC {
 
 extension AddSetupVC: NSTableViewDelegate, NSTableViewDataSource {
     
-    /** Setting up tableView. */
+    /// Used for up tableView.
     fileprivate func setupTableView(){
         
         tableView.delegate = self

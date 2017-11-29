@@ -28,7 +28,7 @@ class HomeVC: NSViewController {
         }
         set {
             // Encode NetworkSetup object.
-            let setupList = newValue.map({ NSKeyedArchiver.archivedData(withRootObject: $0)})
+            let setupList = newValue.map({ NSKeyedArchiver.archivedData(withRootObject: $0) })
             UserDefaults.standard.set(setupList, forKey: "setupList")
         }
     }
@@ -36,20 +36,20 @@ class HomeVC: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        setupTableView()
     }
     
     override var representedObject: Any? {
         didSet {
-            // Update the view, if already loaded.
             
+            // Update the view, if already loaded.
         }
     }
 }
 
 extension HomeVC: NSTableViewDelegate, NSTableViewDataSource {
     
-    /** Setting up the tableView. */
+    /// Used for setting up the tableView.
     fileprivate func setupTableView() {
         
         tableView.delegate = self
