@@ -65,7 +65,7 @@ class NetworkSetup: NSObject, NSCoding {
     func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: "name")
         aCoder.encode(path, forKey: "path")
-        aCoder.encode(rotation, forKey: "rotation")
+        aCoder.encode(rotation.rawValue, forKey: "rotation")
         aCoder.encode(randomOrder, forKey: "randomOrder")
         aCoder.encode(interval, forKey: "interval")
     }
@@ -73,8 +73,9 @@ class NetworkSetup: NSObject, NSCoding {
     public required convenience init(coder aDecoder: NSCoder) {
         let name = aDecoder.decodeObject(forKey: "name") as! String
         let path = aDecoder.decodeObject(forKey: "path") as! String
-        let rotation = aDecoder.decodeObject(forKey: "rotation") as! RotationMode
-        let randomOrder = aDecoder.decodeBool(forKey: "randomOrder")
+        let rotation = RotationMode(rawValue: aDecoder.decodeInteger(forKey: "rotation")) ?? .off
+        // MARK: For some reason decodeBool crashes (because it interprets as Int?).
+        let randomOrder = aDecoder.decodeObject(forKey: "randomOrder") as! Bool
         let interval = aDecoder.decodeObject(forKey: "interval") as! CGFloat
         self.init(selectedPath: path, networkName: name, rotationMode: rotation, randomOrder: randomOrder, interval: interval)
     }
