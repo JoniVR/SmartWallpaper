@@ -8,7 +8,13 @@
 
 import Cocoa
 
+
 protocol AddNetworkSetupDelegate: class {
+    /**
+    This function is required by the `AddNetworkSetupDelegate` protocol and
+    lets the delegate know when a `NetworkSetup` was added.
+    - parameter networkSetup: The `NetworkSetup` object that is being added.
+    */
     func didAddSetup(networkSetup: NetworkSetup)
 }
 
@@ -28,7 +34,10 @@ class AddSetupVC: NSViewController {
     /// A String that stores the path the user has selected.
     fileprivate var selectedPath: String?
     
-    /// The delegate for delegating actions.
+    /**
+    The delegate for adding a NetworkSetup.
+    The delegate must conform to the `AddNetworkSetupDelegate` protocol.
+    */
     public weak var delegate: AddNetworkSetupDelegate?
     
     override func viewDidLoad() {
