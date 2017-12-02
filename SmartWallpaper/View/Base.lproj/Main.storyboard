@@ -1002,7 +1002,7 @@ DQ
                                     <rect key="frame" x="1" y="0.0" width="438" height="283"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="A5A-XU-05V" viewBased="YES" id="7Lx-QZ-Pdg">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="A5A-XU-05V" viewBased="YES" id="7Lx-QZ-Pdg">
                                             <rect key="frame" x="0.0" y="0.0" width="438" height="260"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
