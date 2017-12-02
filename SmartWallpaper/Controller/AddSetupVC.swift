@@ -8,6 +8,10 @@
 
 import Cocoa
 
+protocol AddNetworkSetupDelegate: class {
+    func didAddSetup(networkSetup: NetworkSetup)
+}
+
 class AddSetupVC: NSViewController {
 
     @IBOutlet weak var tableView: NSTableView!
@@ -23,6 +27,9 @@ class AddSetupVC: NSViewController {
     fileprivate var selectedNetworkName: String?
     /// A String that stores the path the user has selected.
     fileprivate var selectedPath: String?
+    
+    /// The delegate for delegating actions.
+    public weak var delegate: AddNetworkSetupDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,11 +60,9 @@ class AddSetupVC: NSViewController {
          - check if NetworkSetup already exists before adding.
          - move and refactor runScript code.
          */
-        if let homeVC = self.parent as? HomeVC {
-            
-            let networkSetup = NetworkSetup(selectedPath: selectedPath!, networkName: selectedNetworkName!, rotationMode: .interval, randomOrder: shuffleWallpaperBtn.isFlipped, interval: 60.0)
-            homeVC.networkSetupList.append(networkSetup)
-        }
+        
+        let networkSetup = NetworkSetup(selectedPath: selectedPath!, networkName: selectedNetworkName!, rotationMode: .interval, randomOrder: shuffleWallpaperBtn.isFlipped, interval: 60.0)
+        delegate?.didAddSetup(networkSetup: networkSetup)
         
         //runScript(path: selectedPath!, rotation: 1, randomOrder: true, interval: 60.0)
         
