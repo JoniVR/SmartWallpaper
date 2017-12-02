@@ -55,4 +55,27 @@ extension HomeVC: NSTableViewDelegate, NSTableViewDataSource {
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        
+        return networkSetupList.count
+    }
+    
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        
+        let networkSetup = networkSetupList[row]
+        
+        if let cell = tableView.makeView(withIdentifier: tableColumn!.identifier, owner: self) as? NSTableCellView {
+            
+            if (tableColumn?.identifier)!.rawValue == "NetworkName" {
+                cell.textField?.stringValue = networkSetup.name
+            }
+            
+            if (tableColumn?.identifier)!.rawValue == "Path" {
+                cell.textField?.stringValue = networkSetup.path
+            }
+            return cell
+        }
+        return nil
+    }
 }
