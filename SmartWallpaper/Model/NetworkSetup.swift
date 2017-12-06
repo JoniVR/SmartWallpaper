@@ -10,16 +10,39 @@ import Foundation
 
 /**
  The way wallpapers are rotated.
- - off: No wallpaper rotation is applied.
- - interval: Wallpaper rotation is based on an interval (see `interval` property).
- - login: Wallpapers change when a user logs in.
- - sleep: Wallpapers change when the device comes out of sleep.
+ 
+ **AppleScript Rotation modes**
+ - 0 = off: No wallpaper rotation is applied.
+ - 1 = interval: Wallpaper rotation is based on an interval (see `interval` property).
+ - 2 = login: Wallpapers change when a user logs in.
+ - 3 = sleep: Wallpapers change when the device comes out of sleep.
  */
 enum RotationMode: Int {
-    case off
+    
+    case off = 0
     case interval
     case login
     case sleep
+    case everyFiveSeconds
+    case everyMinute
+    case everyFiveMinutes
+    case everyFifteenMinutes
+    case everyThirtyMinutes
+    case everyHour
+    case everyDay
+    
+    func getAsInterval() -> CGFloat {
+        switch self {
+        case .everyFiveSeconds:     return 5.0
+        case .everyMinute:          return 60.0
+        case .everyFiveMinutes:     return 300.0
+        case .everyFifteenMinutes:  return 900.0
+        case .everyThirtyMinutes:   return 1800.0
+        case .everyHour:            return 3600.0
+        case .everyDay:             return 86400.0
+        default:                    return 0.0
+        }
+    }
 }
 
 /**
@@ -28,9 +51,10 @@ enum RotationMode: Int {
  This class inherits from NSObject and implements NSCoding.
  
  Objects of this class can be encoded and decoded.
- 
-        let networkSetupData = NSKeyedArchiver.archivedDataWithRootObject(networkSetup)
-        let networkSetup = NSKeyedUnarchiver.unarchiveObjectWithData(networkSetupData) as! networkSetup
+ ```
+ let networkSetupData = NSKeyedArchiver.archivedDataWithRootObject(networkSetup)
+ let networkSetup = NSKeyedUnarchiver.unarchiveObjectWithData(networkSetupData) as! networkSetup
+ ```
  */
 class NetworkSetup: NSObject, NSCoding {
     
@@ -53,7 +77,7 @@ class NetworkSetup: NSObject, NSCoding {
      - parameter randomOrder: A `Bool` that indicates if the wallpapers are rotated at random or not.
      - parameter interval: A `CGFloat` that defines the time between changing wallpapers.
      */
-    init(selectedPath: String, networkName: String, rotationMode: RotationMode, randomOrder: Bool, interval: CGFloat) {
+    init(selectedPath: String, networkName: String, rotationMode: RotationMode?, randomOrder: Bool, interval: CGFloat) {
         
         self.name = networkName
         self.path = selectedPath

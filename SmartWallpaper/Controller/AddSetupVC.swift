@@ -33,6 +33,8 @@ class AddSetupVC: NSViewController {
     fileprivate var selectedNetworkName: String?
     /// A String that stores the path the user has selected.
     fileprivate var selectedPath: String?
+    /// The Wallpaper `RotationMode` that the user can select using the `changeWallpaperIntervalPopup`. The default is `.login`.
+    fileprivate var selectedRotationMode: RotationMode? = .login
     
     /**
     The delegate for adding a NetworkSetup.
@@ -70,10 +72,17 @@ class AddSetupVC: NSViewController {
          - move and refactor runScript code.
          */
         
-        let networkSetup = NetworkSetup(selectedPath: selectedPath!, networkName: selectedNetworkName!, rotationMode: .interval, randomOrder: shuffleWallpaperBtn.isFlipped, interval: 60.0)
-        delegate?.didAddSetup(networkSetup: networkSetup)
+        // When we select an interval we set the selectedRotationMode to interval
+        if (selectedRotationMode!.rawValue >= 2) {
+            selectedRotationMode = .interval
+        }
         
-        //runScript(path: selectedPath!, rotation: 1, randomOrder: true, interval: 60.0)
+        let networkSetupToAdd = NetworkSetup(selectedPath: selectedPath!,
+                                             networkName: selectedNetworkName!,
+                                             rotationMode: selectedRotationMode!,
+                                             randomOrder: shuffleWallpaperBtn.isFlipped,
+                                             interval: selectedRotationMode!.getAsInterval())
+        delegate?.didAddSetup(networkSetup: networkSetupToAdd)
         
         self.dismiss(sender)
     }
@@ -103,10 +112,21 @@ class AddSetupVC: NSViewController {
         if sender.state == .on {
             changeWallpaperIntervalPopup.isEnabled = true
             shuffleWallpaperBtn.isEnabled = true
+            selectedRotationMode = RotationMode(rawValue: changeWallpaperIntervalPopup.selectedItem!.tag)
         } else {
             changeWallpaperIntervalPopup.isEnabled = false
             shuffleWallpaperBtn.isEnabled = false
+            selectedRotationMode = .off
         }
+    }
+    
+    /**
+     Gets called when a `NSMenuItem` inside the `changeWallpaperIntervalPopup` gets clicked.
+     - parameter sender: The NSMenuItem that is clicked.
+     */
+    @objc func popupItemClicked(_ sender: NSMenuItem){
+        
+        selectedRotationMode = RotationMode(rawValue: sender.tag)
     }
 }
 
@@ -208,9 +228,22 @@ extension AddSetupVC {
     /// Setting up the options for the `changeWallpaperIntervalPopup`.
     fileprivate func setupPopUpButton(){
         
-        changeWallpaperIntervalPopup.removeAllItems()
-        let items = ["At login","After sleep","Every 5 seconds","Every minute","Every 5 minutes","Every 15 minutes","Every half hour","Every hour","Every day"]
-        changeWallpaperIntervalPopup.addItems(withTitles: items)
+        let menu = NSMenu()
+        let titles = ["At login","After sleep","Every 5 seconds","Every minute","Every 5 minutes","Every 15 minutes","Every half hour","Every hour","Every day"]
+        // MARK: We use this to assign tags that match the respective RotationMode value to each title, since values "off" and "interval" are not in the list we start from 2.
+        var i = 2
+        
+        for title in titles {
+            
+            let item = NSMenuItem(title: title, action: #selector(popupItemClicked(_:)), keyEquivalent: "")
+            item.tag = i
+            menu.addItem(item)
+            i+=1
+            
+            // Add a separator between "After sleep" and "Every 5 seconds"
+            if i == 4 { menu.addItem(NSMenuItem.separator()) }
+        }
+        changeWallpaperIntervalPopup.menu = menu
     }
 }
 
