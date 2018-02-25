@@ -17,7 +17,7 @@ class MainWindowController: NSWindowController {
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         
-        if segue.identifier?._rawValue == "AddSetupSegue" {
+        if segue.identifier?.rawValue == "AddSetupSegue" {
             if let destination = segue.destinationController as? AddSetupVC {
                 
                 // Assign the AddnetWorkSetupDelegate
