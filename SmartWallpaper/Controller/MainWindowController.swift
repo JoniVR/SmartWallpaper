@@ -20,7 +20,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-
 import Cocoa
 
 class MainWindowController: NSWindowController {
@@ -32,7 +31,7 @@ class MainWindowController: NSWindowController {
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         
-        if segue.identifier?.rawValue == "AddSetupSegue" {
+        if segue.identifier == "AddSetupSegue" {
             if let destination = segue.destinationController as? AddSetupVC {
                 
                 // Assign the AddnetWorkSetupDelegate
