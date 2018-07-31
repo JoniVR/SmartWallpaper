@@ -39,6 +39,11 @@ class MainWindowController: NSWindowController {
             }
         }
     }
+    
+    @IBAction func reloadClicked(_ sender: NSToolbarItem) {
+        
+        
+    }
 }
 
 extension MainWindowController: AddNetworkSetupDelegate {

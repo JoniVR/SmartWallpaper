@@ -22,7 +22,6 @@
 
 import Cocoa
 
-
 protocol AddNetworkSetupDelegate: class {
     /**
     This function is required by the `AddNetworkSetupDelegate` protocol and
@@ -221,22 +220,6 @@ extension AddSetupVC {
         if let scriptObject = NSAppleScript(source: myAppleScript) {
             scriptObject.executeAndReturnError(nil)
         }
-    }
-    
-    /// This function is used to execute shell commands.
-    fileprivate func shell(arguments: [String] = []) -> (String? , Int32) {
-        let task = Process()
-        task.launchPath = "/bin/bash"
-        task.arguments = arguments
-        
-        let pipe = Pipe()
-        task.standardOutput = pipe
-        task.standardError = pipe
-        task.launch()
-        let data = pipe.fileHandleForReading.readDataToEndOfFile()
-        let output = String(data: data, encoding: .utf8)
-        let terminationStatus = task.terminationStatus
-        return (output, terminationStatus)
     }
     
     /// Setting up the options for the `changeWallpaperIntervalPopup`.

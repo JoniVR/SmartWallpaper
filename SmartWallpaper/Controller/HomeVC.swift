@@ -26,6 +26,7 @@ import Foundation
 class HomeVC: NSViewController {
     
     @IBOutlet weak var tableView: NSTableView!
+    @IBOutlet weak var removeSetupBtn: NSButton!
     
     /**
      An array that stores all `NetworkSetup` objects.
@@ -57,6 +58,15 @@ class HomeVC: NSViewController {
         didSet {
             
             // Update the view, if already loaded.
+        }
+    }
+    
+    @IBAction func removePressed(_ sender: NSButton) {
+        
+        // remove a selected setup (-1 means no row selected).
+        if tableView.selectedRow != -1 {
+            networkSetupList.remove(at: tableView.selectedRow)
+            tableView.reloadData()
         }
     }
 }
@@ -91,5 +101,21 @@ extension HomeVC: NSTableViewDelegate, NSTableViewDataSource {
             return cell
         }
         return nil
+    }
+    
+    func tableView(_ tableView: NSTableView, didClick tableColumn: NSTableColumn) {
+        
+        // TODO: sort by name
+    }
+    
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        
+        // make sure remove setup button is only enabled when a setup is currently selected.
+
+        if tableView.selectedRow == -1 {
+            removeSetupBtn.isEnabled = false
+        } else {
+            removeSetupBtn.isEnabled = true
+        }
     }
 }
