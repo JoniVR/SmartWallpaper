@@ -22,15 +22,6 @@
 
 import Cocoa
 
-protocol AddNetworkSetupDelegate: class {
-    /**
-    This function is required by the `AddNetworkSetupDelegate` protocol and
-    lets the delegate know when a `NetworkSetup` was added.
-    - parameter networkSetup: The `NetworkSetup` object that is being added.
-    */
-    func didAddSetup(networkSetup: NetworkSetup)
-}
-
 class AddSetupVC: NSViewController {
 
     @IBOutlet weak var tableView: NSTableView!
@@ -95,6 +86,7 @@ class AddSetupVC: NSViewController {
                                              rotationMode: selectedRotationMode!,
                                              randomOrder: shuffleWallpaperBtn.isFlipped,
                                              interval: selectedRotationMode!.getAsInterval())
+        
         delegate?.didAddSetup(networkSetup: networkSetupToAdd)
         
         self.dismiss(sender)

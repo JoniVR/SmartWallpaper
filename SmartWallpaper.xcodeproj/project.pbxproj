@@ -15,6 +15,8 @@
 		6CC2831A1FBCF16300D34D3B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CC283181FBCF16300D34D3B /* Main.storyboard */; };
 		6CC283231FBCF68D00D34D3B /* AddSetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC283221FBCF68D00D34D3B /* AddSetupVC.swift */; };
 		6CC283261FBCFA1B00D34D3B /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC283241FBCFA1B00D34D3B /* HomeVC.swift */; };
+		6CC75CF8211104CC00EF57F9 /* RotationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC75CF7211104CC00EF57F9 /* RotationMode.swift */; };
+		6CC75CFA2111052200EF57F9 /* AddNetworkSetupDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC75CF92111052200EF57F9 /* AddNetworkSetupDelegate.swift */; };
 		6CD0FF3C210F700C0028D90E /* GeneralExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD0FF3B210F700C0028D90E /* GeneralExtensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +32,8 @@
 		6CC2831C1FBCF16300D34D3B /* SmartWallpaper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SmartWallpaper.entitlements; sourceTree = "<group>"; };
 		6CC283221FBCF68D00D34D3B /* AddSetupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSetupVC.swift; sourceTree = "<group>"; };
 		6CC283241FBCFA1B00D34D3B /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		6CC75CF7211104CC00EF57F9 /* RotationMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationMode.swift; sourceTree = "<group>"; };
+		6CC75CF92111052200EF57F9 /* AddNetworkSetupDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNetworkSetupDelegate.swift; sourceTree = "<group>"; };
 		6CD0FF3B210F700C0028D90E /* GeneralExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -56,6 +60,8 @@
 			isa = PBXGroup;
 			children = (
 				6C5794ED1FCA243300D6866D /* NetworkSetup.swift */,
+				6CC75CF7211104CC00EF57F9 /* RotationMode.swift */,
+				6CC75CF92111052200EF57F9 /* AddNetworkSetupDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -184,11 +190,13 @@
 			files = (
 				6C7D75D91FBE2F84005D6D88 /* StringsExtensions.swift in Sources */,
 				6CD0FF3C210F700C0028D90E /* GeneralExtensions.swift in Sources */,
+				6CC75CF8211104CC00EF57F9 /* RotationMode.swift in Sources */,
 				6C5794EE1FCA243300D6866D /* NetworkSetup.swift in Sources */,
 				6C96ECCB1FD350B400698552 /* MainWindowController.swift in Sources */,
 				6CC283261FBCFA1B00D34D3B /* HomeVC.swift in Sources */,
 				6CC283131FBCF16300D34D3B /* AppDelegate.swift in Sources */,
 				6CC283231FBCF68D00D34D3B /* AddSetupVC.swift in Sources */,
+				6CC75CFA2111052200EF57F9 /* AddNetworkSetupDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

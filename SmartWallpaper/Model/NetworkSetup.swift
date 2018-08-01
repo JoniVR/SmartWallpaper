@@ -20,45 +20,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
-
-/**
- The way wallpapers are rotated.
- 
- **AppleScript Rotation modes**
- - 0 = off: No wallpaper rotation is applied.
- - 1 = interval: Wallpaper rotation is based on an interval (see `interval` property).
- - 2 = login: Wallpapers change when a user logs in.
- - 3 = sleep: Wallpapers change when the device comes out of sleep.
- */
-enum RotationMode: Int {
-    
-    case off = 0
-    case interval
-    case login
-    case sleep
-    case everyFiveSeconds
-    case everyMinute
-    case everyFiveMinutes
-    case everyFifteenMinutes
-    case everyThirtyMinutes
-    case everyHour
-    case everyDay
-    
-    func getAsInterval() -> CGFloat {
-        switch self {
-        case .everyFiveSeconds:     return 5.0
-        case .everyMinute:          return 60.0
-        case .everyFiveMinutes:     return 300.0
-        case .everyFifteenMinutes:  return 900.0
-        case .everyThirtyMinutes:   return 1800.0
-        case .everyHour:            return 3600.0
-        case .everyDay:             return 86400.0
-        default:                    return 0.0
-        }
-    }
-}
-
 /**
  An object that stores a SmartWallpaper setup.
  
@@ -70,6 +31,9 @@ enum RotationMode: Int {
  let networkSetup = NSKeyedUnarchiver.unarchiveObjectWithData(networkSetupData) as! networkSetup
  ```
  */
+
+import Foundation
+
 class NetworkSetup: NSObject, NSCoding {
     
     /// The name of the selected network that is used to link a specific path.
